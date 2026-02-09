@@ -16,6 +16,20 @@ final class CharacterViewController: UIViewController {
         view.backgroundColor = .systemBackground
         title = "Characters"
         
+        let request = Request(
+            endpoint: .character,
+            queryParameters: [
+                URLQueryItem(name: "name", value: "Spider-Man"),
+                URLQueryItem(name: "status", value: "alive")
+            ]
+        )
+        print(request.url)
+        
+        Service.shared.execute(request,expecting: CharacterModel.self) { result in
+            
+        }
+        
+        
     }
 
 
