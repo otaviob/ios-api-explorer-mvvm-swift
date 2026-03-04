@@ -15,11 +15,11 @@ final class Request {
         static let baseUrl = "https://rickandmortyapi.com/api"
     }
     
-    
+    /// Desired endpoint
     let endpoint: Endpoint
     
     /// Path components for API, if any
-    let pathComponents: Set<String>
+    let pathComponents: [String]
     
     /// Query arguments for API, if any
     let queryParameters: [URLQueryItem]
@@ -67,14 +67,17 @@ final class Request {
     ///     - queryParameters: Collection of query parameters
     public init(
         endpoint: Endpoint,
-        pathComponents: Set<String> = [],
+        pathComponents: [String] = [],
         queryParameters: [URLQueryItem] = []
     ) {
         self.endpoint = endpoint
-        self.pathComponents = Array(pathComponents)
+        self.pathComponents = pathComponents
         
         self.queryParameters = queryParameters
     }
     
 }
 
+extension Request {
+    static let listCharactersRequest = Request(endpoint: .character)
+}
